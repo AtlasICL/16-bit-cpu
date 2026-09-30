@@ -1,0 +1,21 @@
+// ============================================================================
+// test_shift.asm
+// Course-provided test program, original name: lab1testshift.txt
+// Source: Imperial College London DECA labs (EEP1). Not written by me.
+//
+//   Checks the barrel shifter: LSL, LSR, ASR and XSR (shift right through carry).
+// ============================================================================
+
+        MOV     R2, #0x1        // set up known value on R2
+        LSL     R2, R2, #1
+        LSL     R2, R2, #2
+        LSL     R2, R2, #4
+        LSL     R2, R2, #8
+        ASR     R2, R2, #3
+        LSR     R2, R2, #6
+        ASR     R2, R2, #6
+        MOV     R2, #0xFF
+        ADD     R0, #0          // FLAGC := 0
+        XSR     R2, R2, #3
+        SUB     R0, R0, R0      // FLAGC := 1
+        XSR     R2, R2, #2
